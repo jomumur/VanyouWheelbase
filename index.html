@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://d3cuf6g1arkgx6.cloudfront.net/sdk/1-7/wheelbase-widget.css">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/custom-css.css">
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <p>Hello world! This is HTML5 Boilerplate.</p>
+
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="date-container"></div>
+                <div id="vehicle-type"></div>
+                <div id="vehicle-price"></div>
+                <div id="vehicle-tags"></div>
+            </div>
+            <div class="col-sm-8">
+                <div id="rental-results"></div>
+            </div>
+        </div>
+    </div>
+</body>
+   
+
+  <script src="js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+ <!-- WheelBase -->
+  <script type="text/javascript" src="https://d3cuf6g1arkgx6.cloudfront.net/sdk/1-7/wheelbase-widget.min.js"></script>
+   
+</script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+
+  <script type="text/html" id="result-template">
+    <div class="col-sm-4">
+      <a href="/rental/{{id}}">
+        <div class="rental-result">
+          <div class="rv-img">
+            <div class="rv-image-container">
+              <img src="{{primary_image_url}}" alt="{{name}} in {{home.city}}, {{home.state}}">
+            </div>
+            <div class="price">${{price.day}}<span class="price-info">/night</span></div>
+          </div>
+          <div class="rv-info">
+            <div class="rv-title">{{name}}</div>
+            <div class="rv-subtitle">
+              <span class="pull-right">
+                <i class='fa fa-heart favorites-count'></i> {{score}} / 5
+              </span>
+              {{home.city}}, {{home.state}}
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+</script>
+
+<script type="text/html" id="unavailable-result-template">
+    <div class="col-sm-4">
+      <a href="/rental/{{id}}">
+        Unavailable - {{name}}
+      </a>
+    </div>
+</script>
+
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

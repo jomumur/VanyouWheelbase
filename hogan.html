@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="timeline">
+
+        <!-- load more button -->
+        <button>{{message}}</button>
+      
+        <!-- tweet object -->
+        {{#tweets}}
+          {{> tweet}}
+        {{/tweets}}
+      
+      </div>
+
+    <!-- include hogan -->
+    <script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
+
+
+
+<script>
+var hogan = require("hogan.js");
+
+// construct template string
+var template = "Hello {{world}}!";
+
+// compile template
+var hello = hogan.compile(template);  
+
+</script>
+</body>
+</html>
