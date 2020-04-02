@@ -24,6 +24,18 @@ wheelbase.addWidget(wheelbase.widgets.RentalList, "rental-results", {
     }
 });
 
+wheelbase.addWidget(wheelbase.widgets.LocationList, "locations-container", {
+    cssClasses: {
+        root: "rental-location-container",
+        listItem: "rental-location",
+        listItemLabel: "rental-location-label"
+    },
+    template: function(data) {
+        //optional
+        return "{{label}}";
+    }
+})
+
 // now lets add the search widgets
 wheelbase.addWidget(wheelbase.widgets.TypeList, "vehicle-type", {
     cssClasses: {
