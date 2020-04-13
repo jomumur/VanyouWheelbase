@@ -1,5 +1,5 @@
 var wheelbase = Wheelbase({
-    accountId:  720951,
+    accountId: 720951,
     urlParams: true,
     currency: 'EUR'
 });
@@ -13,9 +13,9 @@ var unavailableTemplate = document.getElementById("unavailable-result-template")
 // now add the widget to the page
 // we're also providing custom classes, this is completely optional
 wheelbase.addWidget(wheelbase.widgets.RentalList, "rental-results", {
-    template:resultTemplate,
+    template: resultTemplate,
     unavailable: unavailableTemplate, // optional, will just hide unavailable results if no template provided
-    filters:{
+    filters: {
         "hidden": true
     },
     cssClasses: {
@@ -25,12 +25,12 @@ wheelbase.addWidget(wheelbase.widgets.RentalList, "rental-results", {
 });
 
 wheelbase.addWidget(wheelbase.widgets.LocationList, "locations-container", {
-    cssClasses: {
-        root: "rental-location-container",
-        listItem: "rental-location",
-        listItemLabel: "rental-location-label"
-    },
-    template: function(data) {
+    // cssClasses: {
+    //     root: "rental-location-container",
+    //     listItem: "rental-location",
+    //     listItemLabel: "rental-location-label"
+    // },
+    template: function (data) {
         //optional
         return "{{label}}";
     }
@@ -49,4 +49,7 @@ wheelbase.addWidget(wheelbase.widgets.TypeList, "vehicle-type", {
 wheelbase.addWidget(wheelbase.widgets.DateRange, "date-container", options = {});
 wheelbase.addWidget(wheelbase.widgets.SelectFilter, "vehicle-tags");
 
-wheelbase.start();
+
+wheelbase.start()
+
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://d3cuf6g1arkgx6.cloudfront.net/sdk/1-7/wheelbase-widget.css">
+</head>
+
+<body>
+    <h1>RENTAL</h1>
+
+    <div>
+        <div id="availability-calendar-container"></div>
+    </div>
+
+    <div>
+        <div id="quote-container"></div>
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://d3cuf6g1arkgx6.cloudfront.net/sdk/1-7/wheelbase-widget.min.js"></script>
+
+<script>
+    $(function () {
+        console.log("ready chaval!");
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var rvId = urlParams.get('rvId');
+
+        var wheelbase = Wheelbase({
+            accountId: rvId,
+            urlParams: true,
+            currency: 'EUR'
+        });
+
+        //Abailability
+        wheelbase.addWidget(wheelbase.widgets.DateRange, "availability-calendar-container", {
+            rentalId: rvId,
+            embedded: true,
+            numberOfMonths: 2 // optional
+        });
+
+
+        //Quote
+        wheelbase.addWidget(wheelbase.widgets.Quote, "quote-container", {
+            rentalId: 126368, //your rental ID
+            template: {
+                error: "{{error}}",
+                noQuote: "before-quote-entered",
+                quote: function (quote) {
+                    return "quote received";
+                }
+            },
+            cssClasses: {
+                root: "base-class",
+                lineItem: "wheelbase-line-item",
+                lineItemDescription: "wheelbase-line-item-description",
+                lineItemPrice: "wheelbase-line-item-price",
+                lineTotal: "wheelbase-line-total",
+                lineSubtotal: "wheelbase-line-subtotal",
+                lineTax: "wheelbase-line-tax",
+                lineServiceFee: "wheelbase-line-service-fee",
+                error: "wheelbase-quote-error"
+            }
+        });
+
+
+
+        wheelbase.start();
+    }
+
+    );
+
+
+</script>
+
+</html>
