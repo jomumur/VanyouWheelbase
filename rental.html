@@ -19,19 +19,25 @@
         <div id="quote-container"></div>
     </div>
 
+    <div>
+        <button onclick="initiateRental()">Initialice Booking</button>
+    </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://d3cuf6g1arkgx6.cloudfront.net/sdk/1-7/wheelbase-widget.min.js"></script>
 
 <script>
+    var wheelbase;
+    var rvId;
+
     $(function () {
         console.log("ready chaval!");
 
         var urlParams = new URLSearchParams(window.location.search);
-        var rvId = urlParams.get('rvId');
+        rvId = urlParams.get('rvId');
 
-        var wheelbase = Wheelbase({
+        wheelbase = Wheelbase({
             accountId: rvId,
             urlParams: true,
             currency: 'EUR'
@@ -68,13 +74,27 @@
             }
         });
 
-
-
         wheelbase.start();
+    });
+
+    function initiateRental() {
+        wheelbase.startBooking({
+            firstName: "tim",
+            lastName: "smith",
+            email: "email@provider.com",
+            phone: "555-555-5555",
+            rentalId: rvId,
+            campaign: '',
+            source: '',
+            medium: '',
+            discountCode: 'asdf'
+        }).then(function (url, bookingDetails) {
+            console.log("reservation details if you need them", bookingDetails);
+            window.location.href = url;
+        }).catch(function (error) {
+            alert("There was an error creating your reservation: " + error);
+        });
     }
-
-    );
-
 
 </script>
 
